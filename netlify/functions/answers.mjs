@@ -3,16 +3,16 @@ import { getStore } from '@netlify/blobs';
 const store = getStore('riddle-data');
 const key = 'answers';
 const normalize = value => String(value).trim().replace(/[إأآ]/g, 'ا').replace(/ى/g, 'ي').replace(/\s+/g, ' ');
-const json = (statusCode, body) => ({ statusCode, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }, body: JSON.stringify(body) });
+const json = (status, body) => Response.json(body, { status, headers: { 'cache-control': 'no-store' } });
 const getEntries = async () => (await store.get(key, { type: 'json' })) || [];
 
 export default async request => {
-  const method = request.method || request.httpMethod;
+  const method = request.method;
   if (method === 'GET') return json(200, await getEntries());
   if (method === 'DELETE') { await store.setJSON(key, []); return json(200, { ok: true }); }
   if (method !== 'POST') return json(405, { error: 'Method not allowed' });
   try {
-    const payload = request.json ? await request.json() : JSON.parse(request.body || '{}');
+    const payload = await request.json();
     const name = String(payload.name || '').trim().slice(0, 80);
     const department = String(payload.department || '').trim().slice(0, 80);
     const answer = String(payload.answer || '').trim().slice(0, 150);
