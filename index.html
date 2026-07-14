@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لغز اليوم</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="participant-page">
+  <main class="card puzzle-card">
+    <div class="eyebrow">مساحة التحدّي</div>
+    <h1>لغز اليوم</h1>
+    <p class="intro">أرسل إجابتك، وسيتم تسجيل وقت مشاركتك تلقائيًا.</p>
+    <section class="riddle" aria-label="اللغز">
+      <span>💡</span>
+      <p>ما هو الشيء الذي يُقال عنه إنه قصير، رغم أنه ليس له طول؟</p>
+    </section>
+    <form id="answerForm">
+      <label>الاسم الكامل<input id="name" required maxlength="80" placeholder="اكتب اسمك" /></label>
+      <label>الإدارة<input id="department" required maxlength="80" placeholder="مثال: إدارة الموارد البشرية" /></label>
+      <label>الحل<textarea id="answer" required maxlength="150" placeholder="اكتب إجابتك هنا"></textarea></label>
+      <button type="submit">إرسال الإجابة <span>←</span></button>
+    </form>
+    <div id="message" class="message" role="status"></div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

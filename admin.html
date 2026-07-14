@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم | لغز اليوم</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="admin-page">
+  <header class="admin-header">
+    <div><div class="eyebrow">لوحة التحكم</div><h1>إجابات لغز اليوم</h1></div>
+    <button class="secondary danger" id="clearAll">حذف كل الإجابات</button>
+  </header>
+  <main class="dashboard">
+    <section class="stats" aria-label="ملخص الإجابات">
+      <article><strong id="totalCount">0</strong><span>إجمالي الإجابات</span></article>
+      <article class="correct-stat"><strong id="correctCount">0</strong><span>إجابات صحيحة</span></article>
+      <article class="wrong-stat"><strong id="wrongCount">0</strong><span>إجابات غير صحيحة</span></article>
+    </section>
+    <section class="draw-panel card">
+      <div><div class="eyebrow">السحب التلقائي</div><h2>اختر فائزًا عشوائيًا</h2><p>السحب يشمل الإجابات الصحيحة فقط.</p></div>
+      <div class="draw-actions"><button id="drawWinner">إجراء السحب</button><button class="secondary" id="resetWinner">إعادة تعيين</button></div>
+      <div id="winner" class="winner" aria-live="polite">لم يتم إجراء سحب بعد</div>
+    </section>
+    <section class="answers card">
+      <div class="section-head"><div><h2>سجل الإجابات</h2><p id="answerCaption">جميع المشاركات</p></div><div class="filters"><button class="filter active" data-filter="all">الكل</button><button class="filter" data-filter="correct">صحيحة</button><button class="filter" data-filter="wrong">غير صحيحة</button></div></div>
+      <div class="table-wrap"><table><thead><tr><th>الاسم</th><th>الإدارة</th><th>الإجابة</th><th>الحالة</th><th>وقت الإجابة</th></tr></thead><tbody id="answersBody"></tbody></table></div>
+      <p id="emptyState" class="empty">لا توجد إجابات مسجلة حتى الآن.</p>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>
